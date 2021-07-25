@@ -10,6 +10,7 @@ BBS.map = BBS.map || {};
     BBS.authToken.then(function setAuthToken(token) {
         if (token) {
             authToken = token;
+            console.log(authToken)
         } else {
             window.location.href = '/signin.html';
         }
@@ -20,12 +21,12 @@ BBS.map = BBS.map || {};
     function insertRecord(record) {
         $.ajax({
             method: 'POST',
-            url: _config.api.invokeUrl + '/owner',
+            url: _config.api.invokeUrl + '/rds',
             headers: {
                 Authorization: authToken
             },
             data: JSON.stringify({
-                Item: {
+                record: {
                   Name: record[0].value,
                   Address: record[1].value,
                   PhoneNumber: record[2].value
@@ -47,7 +48,7 @@ BBS.map = BBS.map || {};
 
     // Register click handler for #request button
     $(function onDocReady() {
-        $('#request').click(handleRequestClick);
+        $("#my_form").submit(handleRequestClick);
         $(BBS.map).on('pickupChange', handlePickupChanged);
 
         BBS.authToken.then(function updateAuthMessage(token) {
@@ -58,7 +59,7 @@ BBS.map = BBS.map || {};
         });
 
         if (!_config.api.invokeUrl) {
-            $('#noApiMessage').show();
+            console.log("no api");
         }
     });
 
@@ -69,19 +70,14 @@ BBS.map = BBS.map || {};
     }
 
     function handleRequestClick(event) {
-        var pickupLocation = BBS.map.selectedPoint;
         event.preventDefault();
-        requestUnicorn(pickupLocation);
+        console.log($('#my_form').serializeArray());
+        insertRecord($('#my_form').serializeArray());
     }
-    $("#my_form").submit(function(e) {
-      e.preventDefault();
-      console.log($('#my_form').serializeArray());
-      insertRecord($('#my_form').serializeArray());
 
-    });
 
 
     function displayUpdate(text) {
-        $('#updates').append($('<li>' + text + '</li>'));
+        console.log(text);
     }
 }(jQuery));

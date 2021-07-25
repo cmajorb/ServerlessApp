@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+  <link href="css/footable.bootstrap.css" rel="stylesheet" />
+  <link href="css/main.css" rel="stylesheet" />
+  <title>Owners</title>
+</head>
+
+<body>
+    
+
+
+
+  <header id="home">
+
+
+
+
+    
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light ">
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/reports.html">Reports</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/owners.html">Owners</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/properties.html">Properties</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/tenants.html">Tenants</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/payments.html">Payments</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <div class="container-fluid">
+      <div class="container">
+        <h1>Contracts</h1>
+ 
+
+        <div class="modal fade" id="editor-modal" tabindex="-1" role="dialog" aria-labelledby="editor-title">
+            <style scoped>
+                /* provides a red astrix to denote required fields - this should be included in common stylesheet */
+                .form-group.required .control-label:after {
+                    content:"*";
+                    color:red;
+                    margin-left: 4px;
+                }
+            </style>
+            <div class="modal-dialog" role="document">
+                <form class="modal-content form-horizontal" id="editor">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                        <h4 class="modal-title" id="editor-title">Add Row</h4>
+                    </div>
+                    <div class="modal-body">
+                        <input type="text" id="id" name="id" class="hidden"/>
+                        <div class="form-group required">
+                            <label for="contractid" class="col-sm-3 control-label">ID</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="contractid" name="contractid" placeholder="Contract ID" required>
+                            </div>
+                        </div>
+                        <div class="form-group required">
+                            <label for="tenant" class="col-sm-3 control-label">Tenant</label>
+                            <div class="col-sm-9">
+                                <select class="form-select" aria-label="Default select example" id="tenant" required></select>
+                            </div>
+                        </div>
+                        <div class="form-group required">
+                            <label for="property" class="col-sm-3 control-label">Property</label>
+                            <div class="col-sm-9">
+                                <select class="form-select" aria-label="Default select example" id="property" required></select>
+                            </div>
+                        </div>
+                        <div class="form-group required">
+                            <label for="owner" class="col-sm-3 control-label">Owner</label>
+                            <div class="col-sm-9">
+                                <select class="form-select" aria-label="Default select example" id="owner" required></select>
+                            </div>
+                        </div>
+                        <div class="form-group required">
+                            <label for="expdate" class="col-sm-3 control-label">Expiration Date</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="expdate" name="expdate" placeholder="Expiration Date" required>
+                            </div>
+                        </div>
+                        <div class="form-group required">
+                            <label for="increasedate" class="col-sm-3 control-label">Increase Date</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="increasedate" name="increasedate" placeholder="Increase Date" required>
+                            </div>
+                        </div>
+                        <div class="form-group required">
+                            <label for="increasepercentage" class="col-sm-3 control-label">Increase Percentage</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="increasepercentage" name="increasepercentage" placeholder="Increase Percentage" required>
+                            </div>
+                        </div>
+                        <div class="form-group required">
+                            <label for="salestax" class="col-sm-3 control-label">Sales Tax</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="salestax" name="salestax" placeholder="Sales Tax" required>
+                            </div>
+                        </div>
+                        <div class="form-group required">
+                            <label for="utilities" class="col-sm-3 control-label">Utilities</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="utilities" name="utilities" placeholder="Utilities" required>
+                            </div>
+                        </div>
+                        <div class="form-group required">
+                            <label for="managementfee" class="col-sm-3 control-label">Management Fee</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="managementfee" name="managementfee" placeholder="Management Fee" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <table id="editing-example" class="table footable footable-1 footable-editing footable-editing-right footable-editing-no-view footable-filtering footable-filtering-right footable-paging footable-paging-center breakpoint-lg" data-paging="true" data-filtering="true" data-sorting="true">
+         
+        </table>
+
+    <!--
+           <thead>
+      
+                <tr class="footable-header">
+                  <th data-name="contractid" data-breakpoints="xs" class="footable-sortable footable-first-visible" style="display: table-cell;">ID<span class="fooicon fooicon-sort"></span></th>
+                  <th data-name="tenant" class="footable-sortable" style="display: table-cell;">Tenant<span class="fooicon fooicon-sort"></span></th>
+                  <th data-name="property" class="footable-sortable" style="display: table-cell;">Property<span class="fooicon fooicon-sort"></span></th>
+                  <th data-name="owner" class="footable-sortable" style="display: table-cell;">Owner<span class="fooicon fooicon-sort"></span></th>
+                  <th data-name="expdate" class="footable-sortable" style="display: table-cell;">Expiration Date<span class="fooicon fooicon-sort"></span></th>
+                  <th data-name="increasedate" class="footable-sortable" style="display: table-cell;">Increase Date<span class="fooicon fooicon-sort"></span></th>
+                  <th data-name="increasepercentage" class="footable-sortable" style="display: table-cell;">Increase Percentage<span class="fooicon fooicon-sort"></span></th>
+                  <th data-name="salestax" class="footable-sortable" style="display: table-cell;">Sales Tax<span class="fooicon fooicon-sort"></span></th>
+                  <th data-name="utilities" class="footable-sortable" style="display: table-cell;">Utilities<span class="fooicon fooicon-sort"></span></th>
+                  <th data-name="managementfee" class="footable-sortable" style="display: table-cell;">Management Fee<span class="fooicon fooicon-sort"></span></th>
+                  <th class="footable-editing footable-last-visible" style="display: table-cell;"></th>
+                </tr>
+              </thead>
+    -->
+
+      </div>
+    </div>
+
+    
+  </header>
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h5>Bright Business Solutions</h5>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
+  <script src="/js/footable.js"></script>
+  <script src="js/contracts.js"></script>
+
+</body>
+
+</html>

@@ -66,12 +66,14 @@ function insertRecord(record, username) {
     return ddb.put({
         TableName: 'PR_Owners',
         Item: {
-            Name: record.Name,
+            FirstName: record.FirstName,
+            LastName: record.LastName,
             Address: record.Address,
             PhoneNumber: record.PhoneNumber,
             InsertTime: new Date().toISOString(),
             Username: username,
-            UUID: create_UUID()
+            UUID: create_UUID(),
+            IsActive: 1
         },
     }).promise();
 }
@@ -88,4 +90,27 @@ function errorResponse(errorMessage, awsRequestId, callback) {
       'Access-Control-Allow-Origin': '*',
     },
   });
+}
+
+
+{
+  "TenantId":"LVNET-8",
+  "ExpDate":"5/3/36",
+  "IncreaseDate":"1/6",
+  "IncreasePercentage":0.03,
+  "SalesTax":0,
+  "Utilities":25,
+  "ManagementFee":0.15,
+  "Invoices": [
+    {
+      "InvoiceNumber":002,
+      "Date":"07/10/2021"
+    },
+    {
+      "InvoiceNumber":001,
+      "Date":"06/10/2021"
+    }
+  ],
+  "DateAdded":"07/10/2021 10:43:04",
+  "DateModified":"07/10/2021 11:31:52"
 }

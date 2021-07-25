@@ -1,0 +1,16 @@
+[
+  {"name":"id","title":"ID","class":"footable-sortable"},
+  {"name":"contractid","title":"Contract","class":"footable-sortable"},
+  {"name":"tenant","title":"Tenant","class":"footable-sortable"},
+  {"name":"tenantid","title":"Tenant","class":"footable-sortable","visible":false,"filterable":false},
+  {"name":"propertyname","title":"Property","class":"footable-sortable"},
+  {"name":"propertyid","title":"Property","class":"footable-sortable","visible":false,"filterable":false},
+  {"name":"owner","title":"Owner","class":"footable-sortable"},
+  {"name":"ownerid","title":"Owner","class":"footable-sortable","visible":false,"filterable":false},
+  {"name":"expdate","title":"Expiration Date","class":"footable-sortable"},
+  {"name":"increasedate","title":"Increase Date","class":"footable-sortable"},
+  {"name":"increasepercentage","title":"Increase Percentage","class":"footable-sortable"},
+  {"name":"salestax","title":"Sales Tax","class":"footable-sortable"},
+  {"name":"utilities","title":"Utilities","class":"footable-sortable"},
+  {"name":"managementfee","title":"Management Fee","class":"footable-sortable"}
+]

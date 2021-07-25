@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,600&display=swap" rel="stylesheet">
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <link href="css/main.css" rel="stylesheet" />
-    <title>Owners</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,600&display=swap" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet" />
+  <link href="css/main.css" rel="stylesheet" />
+  <title>Owners</title>
 </head>
+
 <body>
   <header id="home">
     <div class="container">
@@ -41,20 +43,189 @@
     <div class="container-fluid">
       <div class="container">
         <h1>Owners</h1>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Contracts</th>
+              <th scope="col">Handle</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>@fat</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>Larry</td>
+              <td>the Bird</td>
+              <td>@twitter</td>
+            </tr>
+          </tbody>
+        </table>
+
+
+        <table id="exampleFooEditing"
+          class="table table-bordered table-hover toggle-circle footable footable-10 footable-editing footable-editing-right footable-editing-no-view footable-filtering footable-filtering-right footable-paging footable-paging-center footable-editing-show breakpoint-lg"
+          data-paging="true" data-filtering="true" data-sorting="true">
+          <thead>
+            <tr class="footable-filtering">
+              <th colspan="7">
+                <form class="form-inline">
+                  <div class="form-group"><label class="sr-only">Status</label><select class="form-control">
+                      <option>Any Status</option>
+                      <option>Active</option>
+                      <option>Disabled</option>
+                      <option>Suspended</option>
+                    </select></div>
+                  <div class="form-group footable-filtering-search"><label class="sr-only">Search</label>
+                    <div class="input-group"><input type="text" class="form-control" placeholder="Search">
+                      <div class="input-group-btn"><button type="button" class="btn btn-primary"><span
+                            class="fooicon fooicon-search"></span></button><button type="button"
+                          class="btn btn-default dropdown-toggle"><span class="caret"></span></button>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                          <li><a class="checkbox"><label><input type="checkbox" checked="checked">ID</label></a></li>
+                          <li><a class="checkbox"><label><input type="checkbox" checked="checked">First Name</label></a>
+                          </li>
+                          <li><a class="checkbox"><label><input type="checkbox" checked="checked">Last Name</label></a>
+                          </li>
+                          <li><a class="checkbox"><label><input type="checkbox" checked="checked">Job Title</label></a>
+                          </li>
+                          <li><a class="checkbox"><label><input type="checkbox" checked="checked">Started On</label></a>
+                          </li>
+                          <li><a class="checkbox"><label><input type="checkbox" checked="checked">Date of
+                                Birth</label></a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </th>
+            </tr>
+            <tr class="footable-header">
+
+
+
+
+
+
+
+              <th data-name="id" data-type="number" data-breakpoints="xs"
+                class="footable-sortable footable-first-visible" style="display: table-cell;">ID<span
+                  class="fooicon fooicon-sort"></span></th>
+              <th data-name="firstName" class="footable-sortable" style="display: table-cell;">First Name<span
+                  class="fooicon fooicon-sort"></span></th>
+              <th data-name="lastName" class="footable-sortable" style="display: table-cell;">Last Name<span
+                  class="fooicon fooicon-sort"></span></th>
+              <th data-name="jobTitle" data-breakpoints="xs sm" class="footable-sortable" style="display: table-cell;">
+                Job Title<span class="fooicon fooicon-sort"></span></th>
+              <th data-name="startedOn" data-type="date" data-breakpoints="xs sm md" data-format-string="MMMM Do YYYY"
+                class="footable-sortable" style="display: table-cell;">Started On<span
+                  class="fooicon fooicon-sort"></span></th>
+              <th data-name="dob" data-type="date" data-breakpoints="xs sm md" data-format-string="MMMM Do YYYY"
+                class="footable-sortable" style="display: table-cell;">Date of Birth<span
+                  class="fooicon fooicon-sort"></span></th>
+              <th data-name="status" data-visible="false" data-filterable="false" class="footable-sortable"
+                style="display: none;">status<span class="fooicon fooicon-sort"></span></th>
+              <th class="footable-editing footable-last-visible" style="display: table-cell;"></th>
+            </tr>
+          </thead>
+          <tbody>
+
+
+
+
+
+
+
+
+
+
+            <tr>
+              <td class="footable-first-visible" style="display: table-cell;">1</td>
+              <td style="display: table-cell;">RLJ</td>
+              <td style="display: table-cell;">Unknown</td>
+              <td style="display: table-cell;">Unknown</td>
+              <td style="display: none;">
+                <span class="badge badge-table badge-success">Active</span>
+              </td>
+              <td class="footable-editing footable-last-visible" style="display: table-cell;">
+                <div class="btn-group btn-group-xs" role="group"><button type="button"
+                    class="btn btn-default footable-edit"><span class="fooicon fooicon-pencil"
+                      aria-hidden="true"></span></button> <button type="button"
+                    class="btn btn-default footable-delete"><span class="fooicon fooicon-trash"
+                      aria-hidden="true"></span></button></div>
+              </td>
+            </tr>
+            <tr>
+              <td class="footable-first-visible" style="display: table-cell;">2</td>
+              <td style="display: table-cell;">Desimone</td>
+              <td style="display: table-cell;">Unknown</td>
+              <td style="display: table-cell;">Unknown</td>
+              <td style="display: none;">
+                <span class="badge badge-table badge-success">Active</span>
+              </td>
+              <td class="footable-editing footable-last-visible" style="display: table-cell;">
+                <div class="btn-group btn-group-xs" role="group"><button type="button"
+                    class="btn btn-default footable-edit"><span class="fooicon fooicon-pencil"
+                      aria-hidden="true"></span></button> <button type="button"
+                    class="btn btn-default footable-delete"><span class="fooicon fooicon-trash"
+                      aria-hidden="true"></span></button></div>
+              </td>
+            </tr>
+            <tr>
+              <td class="footable-first-visible" style="display: table-cell;">3</td>
+              <td style="display: table-cell;">HIT</td>
+              <td style="display: table-cell;">Unknown</td>
+              <td style="display: table-cell;">Unknown</td>
+              <td style="display: none;">
+                <span class="badge badge-table badge-success">Active</span>
+              </td>
+              <td class="footable-editing footable-last-visible" style="display: table-cell;">
+                <div class="btn-group btn-group-xs" role="group"><button type="button"
+                    class="btn btn-default footable-edit"><span class="fooicon fooicon-pencil"
+                      aria-hidden="true"></span></button> <button type="button"
+                    class="btn btn-default footable-delete"><span class="fooicon fooicon-trash"
+                      aria-hidden="true"></span></button></div>
+              </td>
+            </tr>
+     
+          </tbody>
+          <tfoot>
+            <tr class="footable-editing">
+              <td colspan="7"><button type="button" class="btn btn-primary footable-show"><span
+                    class="fooicon fooicon-pencil" aria-hidden="true"></span> Edit rows</button><button type="button"
+                  class="btn btn-primary footable-add">New row</button> <button type="button"
+                  class="btn btn-default footable-hide">Cancel</button></td>
+            </tr>
+          </tfoot>
+        </table>
+
+
         <h3>Add New Owner</h3>
         <form id="my_form">
           <div class="form-group">
             <label for="Name">Name</label>
             <input type="text" class="form-control" id="Name" name="Name" placeholder="Name">
-          <div class="form-group">
-            <label for="Address">Address</label>
-            <input type="text" class="form-control" id="Address" name="Address" placeholder="Address">
-          </div>
-          <div class="form-group">
-            <label for="PhoneNumber">Phone Number</label>
-            <input type="text" class="form-control" id="PhoneNumber" name="PhoneNumber" placeholder="PhoneNumber">
-          </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="form-group">
+              <label for="Address">Address</label>
+              <input type="text" class="form-control" id="Address" name="Address" placeholder="Address">
+            </div>
+            <div class="form-group">
+              <label for="PhoneNumber">Phone Number</label>
+              <input type="text" class="form-control" id="PhoneNumber" name="PhoneNumber" placeholder="PhoneNumber">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
         </form>
       </div>
     </div>
@@ -69,15 +240,20 @@
       </div>
     </div>
   </footer>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+    integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+    crossorigin="anonymous"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/vendor/jquery-3.1.0.js"></script>
-    <script src="js/vendor/aws-cognito-sdk.min.js"></script>
-    <script src="js/vendor/amazon-cognito-identity.min.js"></script>
-    <script src="https://js.arcgis.com/4.3/"></script>
-    <script src="js/config.js"></script>
-    <script src="js/cognito-auth.js"></script>
-    <script src="js/owners.js"></script>
+  <script src="js/vendor/aws-cognito-sdk.min.js"></script>
+  <script src="js/vendor/amazon-cognito-identity.min.js"></script>
+  <script src="https://js.arcgis.com/4.3/"></script>
+  <script src="js/config.js"></script>
+  <script src="js/cognito-auth.js"></script>
+  <script src="js/owners.js"></script>
 </body>
+
 </html>
