@@ -5,11 +5,11 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,600&display=swap" rel="stylesheet">
+  <link href="css/main.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
     integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
   <link href="css/footable.bootstrap.css" rel="stylesheet" />
-  <link href="css/main.css" rel="stylesheet" />
   <title>Bright Business Solutions</title>
 </head>
 
@@ -31,8 +31,8 @@
         <ul class="nav navbar-nav">
           <li><a href="/">Dashboard</a></li>
           <li><a href="/reports.html">Reports</a></li>
-          <li class="active"><a href="/owners.html">Owners</a></li>
-          <li><a href="/properties.html">Properties</a></li>
+          <li><a href="/owners.html">Owners</a></li>
+          <li class="active"><a href="/properties.html">Properties</a></li>
           <li><a href="/tenants.html">Tenants</a></li>
           <li><a href="/contracts.html">Contracts</a></li>
           <li><a href="/payments.html">Payments</a></li>
@@ -45,8 +45,7 @@
   <div class="container">
 
     <div class="starter-template">
-      <h1>Owners</h1>
-      
+      <h1>Properties</h1>
       <div class="modal fade" id="editor-modal" tabindex="-1" role="dialog" aria-labelledby="editor-title">
         <style scoped>
           /* provides a red astrix to denote required fields - this should be included in common stylesheet */
@@ -72,16 +71,11 @@
                     required>
                 </div>
               </div>
-              <div class="form-group">
-                <label for="address" class="col-sm-3 control-label">Address</label>
+              <div class="form-group required">
+                <label for="sitenumber" class="col-sm-3 control-label">Site Number</label>
                 <div class="col-sm-9">
-                  <input type="text" class="form-control" id="address" name="address" placeholder="Address">
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="phonenumber" class="col-sm-3 control-label">Phone Number</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" id="phonenumber" name="phonenumber" placeholder="Phone Number">
+                  <input type="text" class="form-control" id="sitenumber" name="sitenumber" placeholder="Site Number"
+                    required>
                 </div>
               </div>
             </div>
@@ -102,7 +96,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
   <script src="/js/footable.js"></script>
-  <script src="js/owners.js"></script>
+  <script src="/js/properties.js"></script>
 
 </body>
 

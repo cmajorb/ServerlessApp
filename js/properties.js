@@ -5,8 +5,8 @@ jQuery(function($) {
         $editor = $('#editor'),
         $editorTitle = $('#editor-title'),
         ft = FooTable.init('#editing-example', {
-            "columns": $.get('static/ownerheaders.json'),
-            "rows": $.get('http://localhost:8000/owners/'),
+            "columns": $.get('static/propertyheaders.json'),
+            "rows": $.get('http://localhost:8000/properties/'),
             editing: {
                 enabled: true,
                 addRow: function(){
@@ -20,8 +20,7 @@ jQuery(function($) {
                     console.log(values);
                     $editor.find('#id').val(values.id);
                     $editor.find('#name').val(values.name);
-                    $editor.find('#address').val(values.address);
-                    $editor.find('#phonenumber').val(values.phonenumber);
+                    $editor.find('#sitenumber').val(values.sitenumber);
                     $modal.data('row', row);
                     $editorTitle.text('Edit row #' + values.id);
                     $modal.modal('show');
@@ -29,7 +28,7 @@ jQuery(function($) {
                 deleteRow: function(row){
                     if (confirm('Are you sure you want to delete the row?')){
                         $.ajax({
-                            url: "http://127.0.0.1:8000/owners/"+row.val().id + '/',
+                            url: "http://127.0.0.1:8000/properties/"+row.val().id + '/',
                             type: 'DELETE',
                             success: function(result) {
                                 console.log("success");
@@ -51,8 +50,7 @@ jQuery(function($) {
             values = {
                 id: $editor.find('#id').val(),
                 name: $editor.find('#name').val(),
-                address: $editor.find('#address').val(),
-                phonenumber: $editor.find('#phonenumber').val()
+                sitenumber: $editor.find('#sitenumber').val()
             };
 
         if (row instanceof FooTable.Row){
@@ -60,12 +58,11 @@ jQuery(function($) {
             var myData = {
                 "id": values.id,
                 "name": values.name,
-                "address": values.address,
-                "phonenumber": values.phonenumber
+                "sitenumber": values.sitenumber
             };
             
             $.ajax({
-                url: "http://127.0.0.1:8000/owners/"+ values.id + '/',
+                url: "http://127.0.0.1:8000/properties/"+ values.id + '/',
                 type: 'PATCH',
                 contentType: "application/json",
                 dataType: "json",
@@ -78,11 +75,10 @@ jQuery(function($) {
             row.val(values);
             
         } else {
-            $.post("http://127.0.0.1:8000/owners/",{
+            $.post("http://127.0.0.1:8000/properties/",{
 				"id": values.id,
                 "name": values.name,
-                "address": values.address,
-                "phonenumber": values.phonenumber
+                "sitenumber": values.sitenumber
             });
             values.id = uid++;
             ft.rows.add(values);
