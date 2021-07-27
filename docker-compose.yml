@@ -1,0 +1,15 @@
+version: "2"
+services:
+  home:
+    build: ./application
+    ports:
+      - "80:80"
+    volumes:
+      - ./application:/usr/share/nginx/html
+  web:
+    build: ./django
+    command: python bbs/manage.py runserver 0.0.0.0:8000
+    volumes:
+        - ./django:/code
+    ports:
+        - "8000:8000"
