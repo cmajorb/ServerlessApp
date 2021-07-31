@@ -10,6 +10,7 @@
   {"name":"expdate","title":"Expiration Date","class":"footable-sortable"},
   {"name":"increasedate","title":"Increase Date","class":"footable-sortable"},
   {"name":"increasepercentage","title":"Increase Percentage","class":"footable-sortable"},
+  {"name":"baserent","title":"Base Rent","class":"footable-sortable"},
   {"name":"salestax","title":"Sales Tax","class":"footable-sortable"},
   {"name":"utilities","title":"Utilities","class":"footable-sortable"},
   {"name":"managementfee","title":"Management Fee","class":"footable-sortable"}

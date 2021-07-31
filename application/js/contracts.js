@@ -27,6 +27,7 @@ jQuery(function($) {
                     $editor.find('#expdate').val(values.expdate);
                     $editor.find('#increasedate').val(values.increasedate);
                     $editor.find('#increasepercentage').val(values.increasepercentage);
+                    $editor.find('#baserent').val(values.baserent);
                     $editor.find('#salestax').val(values.salestax);
                     $editor.find('#utilities').val(values.utilities);
                     $editor.find('#managementfee').val(values.managementfee);
@@ -66,6 +67,7 @@ jQuery(function($) {
                 expdate: $editor.find('#expdate').val(),
                 increasedate: $editor.find('#increasedate').val(),
                 increasepercentage: $editor.find('#increasepercentage').val(),
+                baserent: $editor.find('#baserent').val(),
                 salestax: $editor.find('#salestax').val(),
                 utilities: $editor.find('#utilities').val(),
                 managementfee: $editor.find('#managementfee').val()
@@ -81,6 +83,7 @@ jQuery(function($) {
                 "expdate": values.expdate,
                 "increasedate": values.increasedate,
                 "increasepercentage": values.increasepercentage,
+                "baserent": values.baserent,
                 "salestax": values.salestax,
                 "utilities": values.utilities,
                 "managementfee": values.managementfee
@@ -108,6 +111,7 @@ jQuery(function($) {
                 "expdate": values.expdate,
                 "increasedate": values.increasedate,
                 "increasepercentage": values.increasepercentage,
+                "baserent": values.baserent,
                 "salestax": values.salestax,
                 "utilities": values.utilities,
                 "managementfee": values.managementfee

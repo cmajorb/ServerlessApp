@@ -24,7 +24,7 @@ class ContractSerializer(serializers.ModelSerializer):
     #tenant = serializers.StringRelatedField(many=False)
     class Meta:
         model = Contract
-        fields = ('id','contractid', 'ownerid','tenantid','tenant','propertyid','propertyname','owner','expdate','increasedate','increasepercentage','salestax','utilities','managementfee','modified','added')
+        fields = ('id','contractid', 'ownerid','tenantid','tenant','propertyid','propertyname','owner','expdate','increasedate','increasepercentage','baserent','salestax','utilities','managementfee','modified','added')
 
 class TenantSerializer(serializers.ModelSerializer):
     contracts = serializers.StringRelatedField(many=True)
