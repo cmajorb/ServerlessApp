@@ -27,7 +27,7 @@ jQuery(function ($) {
         fileName = encodeURI(fileSelect.name);
 
         $.ajax({
-            url: "http://127.0.0.1:8000/upload/" + fileName,
+            url: baseurl + "/upload/" + fileName,
             type: 'PUT',
             processData: false,
             contentType: false,

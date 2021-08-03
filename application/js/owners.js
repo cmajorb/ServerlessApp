@@ -6,7 +6,7 @@ jQuery(function($) {
         $editorTitle = $('#editor-title'),
         ft = FooTable.init('#editing-example', {
             "columns": $.get('static/ownerheaders.json'),
-            "rows": $.get('http://localhost:8000/owners/'),
+            "rows": $.get(baseurl + '/owners/'),
             editing: {
                 enabled: true,
                 addRow: function(){
@@ -29,7 +29,7 @@ jQuery(function($) {
                 deleteRow: function(row){
                     if (confirm('Are you sure you want to delete the row?')){
                         $.ajax({
-                            url: "http://127.0.0.1:8000/owners/"+row.val().id + '/',
+                            url: baseurl + "/owners/"+row.val().id + '/',
                             type: 'DELETE',
                             success: function(result) {
                                 console.log("success");
@@ -65,7 +65,7 @@ jQuery(function($) {
             };
             
             $.ajax({
-                url: "http://127.0.0.1:8000/owners/"+ values.id + '/',
+                url: baseurl + "/owners/"+ values.id + '/',
                 type: 'PATCH',
                 contentType: "application/json",
                 dataType: "json",
@@ -78,7 +78,7 @@ jQuery(function($) {
             row.val(values);
             
         } else {
-            $.post("http://127.0.0.1:8000/owners/",{
+            $.post(baseurl + "/owners/",{
 				"id": values.id,
                 "name": values.name,
                 "address": values.address,

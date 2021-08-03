@@ -7,7 +7,7 @@ jQuery(function($) {
         $editorTitle = $('#editor-title'),
         ft = FooTable.init('#editing-example', {
             "columns": $.get('static/contractheaders.json'),
-            "rows": $.get('http://localhost:8000/contracts/'),
+            "rows": $.get(baseurl + '/contracts/'),
             editing: {
                 enabled: true,
                 addRow: function(){
@@ -38,7 +38,7 @@ jQuery(function($) {
                 deleteRow: function(row){
                     if (confirm('Are you sure you want to delete the row?')){
                         $.ajax({
-                            url: "http://127.0.0.1:8000/contracts/"+row.val().id + '/',
+                            url: baseurl + "/contracts/"+row.val().id + '/',
                             type: 'DELETE',
                             success: function(result) {
                                 console.log("success");
@@ -90,7 +90,7 @@ jQuery(function($) {
             };
             
             $.ajax({
-                url: "http://127.0.0.1:8000/contracts/"+ values.id + '/',
+                url: baseurl + "/contracts/"+ values.id + '/',
                 type: 'PATCH',
                 contentType: "application/json",
                 dataType: "json",
@@ -103,7 +103,7 @@ jQuery(function($) {
             row.val(values);
             
         } else {
-            $.post("http://127.0.0.1:8000/contracts/",{
+            $.post(baseurl + "/contracts/",{
 				"contractid": values.contractid,
                 "tenantid": values.tenantid,
                 "propertyid": values.propertyid,
@@ -122,7 +122,7 @@ jQuery(function($) {
         $modal.modal('hide');
     });
  
-    $.getJSON( "http://localhost:8000/tenants/", function( json ) {
+    $.getJSON( baseurl + "/tenants/", function( json ) {
         select = document.getElementById('tenant');
         for (var i = 0; i < json.length; i++){
             var opt = document.createElement('option');
@@ -132,7 +132,7 @@ jQuery(function($) {
           }
        });
 
-       $.getJSON( "http://localhost:8000/properties/", function( json ) {
+       $.getJSON( baseurl + "/properties/", function( json ) {
         select = document.getElementById('property');
         for (var i = 0; i < json.length; i++){
             var opt = document.createElement('option');
@@ -142,7 +142,7 @@ jQuery(function($) {
           }
        });
 
-       $.getJSON( "http://localhost:8000/owners/", function( json ) {
+       $.getJSON( baseurl + "/owners/", function( json ) {
         select = document.getElementById('owner');
         for (var i = 0; i < json.length; i++){
             var opt = document.createElement('option');

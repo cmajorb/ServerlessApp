@@ -14,5 +14,6 @@ router.register(r'properties', views.PropertyViewSet)
 urlpatterns = [
     path('', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    re_path(r'^upload/(?P<filename>[^/]+)$', views.FileUploadView.as_view())
+    re_path(r'^upload/(?P<filename>[^/]+)$', views.FileUploadView.as_view()),
+    path('reports',views.ReportDownloadView.as_view())
 ]

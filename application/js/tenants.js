@@ -6,7 +6,7 @@ jQuery(function($) {
         $editorTitle = $('#editor-title'),
         ft = FooTable.init('#editing-example', {
             "columns": $.get('static/tenantheaders.json'),
-            "rows": $.get('http://localhost:8000/tenants/'),
+            "rows": $.get(baseurl + '/tenants/'),
             editing: {
                 enabled: true,
                 addRow: function(){
@@ -27,7 +27,7 @@ jQuery(function($) {
                 deleteRow: function(row){
                     if (confirm('Are you sure you want to delete the row?')){
                         $.ajax({
-                            url: "http://127.0.0.1:8000/tenants/"+row.val().id + '/',
+                            url: baseurl + "/tenants/"+row.val().id + '/',
                             type: 'DELETE',
                             success: function(result) {
                                 console.log("success");
@@ -59,7 +59,7 @@ jQuery(function($) {
             };
             
             $.ajax({
-                url: "http://127.0.0.1:8000/tenants/"+ values.id + '/',
+                url: baseurl + "/tenants/"+ values.id + '/',
                 type: 'PATCH',
                 contentType: "application/json",
                 dataType: "json",
@@ -72,7 +72,7 @@ jQuery(function($) {
             row.val(values);
             
         } else {
-            $.post("http://127.0.0.1:8000/tenants/",{
+            $.post(baseurl + "/tenants/",{
 				"id": values.id,
                 "name": values.name
             });
