@@ -13,5 +13,7 @@
   {"name":"baserent","title":"Base Rent","class":"footable-sortable"},
   {"name":"salestax","title":"Sales Tax","class":"footable-sortable"},
   {"name":"utilities","title":"Utilities","class":"footable-sortable"},
-  {"name":"managementfee","title":"Management Fee","class":"footable-sortable"}
+  {"name":"managementfee","title":"Management Fee","class":"footable-sortable","visible":false,"filterable":false},
+  {"name":"managementfee_p","title":"Management Fee","class":"footable-sortable"}
+  
 ]
