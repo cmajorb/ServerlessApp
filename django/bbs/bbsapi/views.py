@@ -13,13 +13,13 @@ import csv
 from django_pandas.io import read_frame
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
+import calendar
 
 def generate_report(startdate,enddate):
     qs = Contract.objects.all()
     df = read_frame(qs)
 
     currentdate = startdate
-
     #df = pd.read_csv('report-12.csv')
     df = df.dropna(subset=['increasedate', 'increasepercentage'])
     df['increasedate'] = pd.to_datetime(df['increasedate'])
@@ -28,19 +28,21 @@ def generate_report(startdate,enddate):
     while currentdate <= enddate:
         df['current'] = currentdate
         df['adjusted'] = df.apply(lambda x: x['current'] + pd.DateOffset(months = x['adj']), axis=1)
+        df['monthdays'] = calendar.monthrange(currentdate.year,currentdate.month)[1]
         col = str(currentdate.month) + "/" + str(currentdate.year)
         #mask = df['increasedate'].dt.month == month
         #df.loc[mask, 'baserent'] = df['baserent'] * ((1 + df['increasepercentage']) ** ((year - df['increasedate'].dt.year)+1))
-        rent = df['baserent'] * ((1 + df['increasepercentage']) ** ((df['adjusted'].dt.year - df['increasedate'].dt.year)))
-        management_fee = df['managementfee'] * rent        
-        df[col + ' rent'] = rent
+        df['newrent'] = df['baserent'] * ((1 + df['increasepercentage']) ** ((df['adjusted'].dt.year - df['increasedate'].dt.year)))
+        df.loc[df['increasedate'].dt.month == currentdate.month,'newrent'] = ((df['baserent'] * (df['increasedate'].dt.day - 1) * (((1 + df['increasepercentage']) ** ((df['adjusted'].dt.year - df['increasedate'].dt.year - 1))) - ((1 + df['increasepercentage']) ** ((df['adjusted'].dt.year - df['increasedate'].dt.year)))) ) / df['monthdays'] ) + df['baserent'] * ((1 + df['increasepercentage']) ** ((df['adjusted'].dt.year - df['increasedate'].dt.year)))
+        management_fee = df['managementfee'] * df['newrent']        
+        df[col + ' rent'] = df['newrent']
         df[col + ' management fee'] = management_fee
-        df[col + ' total'] = rent + management_fee + df['salestax'] + df['utilities']   
+        df[col + ' total'] = df['newrent'] + management_fee + df['salestax'] + df['utilities']   
         currentdate = currentdate + relativedelta(months=+1)
 
-    #df.filter(regex='rent')
+        #df.filter(regex='rent')
 
-    df = df.drop(columns=['adj', 'current','adjusted','id'])
+    df = df.drop(columns=['adj', 'current','adjusted','id','newrent','monthdays'])
     return df
 
 # Create your views here.
