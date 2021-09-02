@@ -2,8 +2,8 @@
 
 from django.shortcuts import render
 from rest_framework import viewsets, views
-from .serializers import ContractSerializer, OwnerSerializer, TenantSerializer, PropertySerializer
-from .models import Contract, Owner, Tenant, Property
+from .serializers import ContractSerializer, OwnerSerializer, TenantSerializer, PropertySerializer, PaymentSerializer
+from .models import Contract, Owner, Tenant, Property, Payment
 from rest_framework.parsers import FileUploadParser
 from rest_framework.response import Response
 from django.core.files.storage import default_storage
@@ -63,18 +63,24 @@ class PropertyViewSet(viewsets.ModelViewSet):
     queryset = Property.objects.all().order_by('id')
     serializer_class = PropertySerializer
 
+class PaymentViewSet(viewsets.ModelViewSet):
+    queryset = Payment.objects.all().order_by('id')
+    serializer_class = PaymentSerializer
 
 class FileUploadView(views.APIView):
     parser_classes = [FileUploadParser]
     def put(self, request, filename, format=None):
         file_obj = request.data['file']
-        data = pd.read_csv(file_obj)
-        print(file_obj)
-        file_name = default_storage.save(filename, file_obj)
-        # ...
-        # do some stuff with uploaded file
-        # ...
-        return HttpResponse(data['OWNER'][0])
+        payments = pd.read_csv(file_obj)
+        qs = Contract.objects.all()
+        df = read_frame(qs)
+        payments = payments.merge(df, on='contractid', how='inner')
+
+        for payment in payments.itertuples():
+            payment = Payment.objects.create(contractid=Contract.objects.get(id=int(payment.id)),salestax=payment.salestax1,rent=payment.rent1,utilities=payment.utilities1,paymentdate=payment.paymentdate)
+        #file_name = default_storage.save(filename, file_obj)
+ 
+        return HttpResponse("It worked!")
 
 class ReportDownloadView(views.APIView):
     def get(self, request):

@@ -5,8 +5,8 @@ jQuery(function($) {
         $editor = $('#editor'),
         $editorTitle = $('#editor-title'),
         ft = FooTable.init('#editing-example', {
-            "columns": $.get('static/ownerheaders.json'),
-            "rows": $.get(baseurl + '/owners/'),
+            "columns": $.get('static/paymentheaders.json'),
+            "rows": $.get(baseurl + '/payments/'),
             editing: {
                 enabled: true,
                 addRow: function(){
@@ -19,10 +19,11 @@ jQuery(function($) {
                     var values = row.val();
                     console.log(values);
                     $editor.find('#id').val(values.id);
-                    $editor.find('#name').val(values.name);
-                    $editor.find('#address').val(values.address);
-                    $editor.find('#phonenumber').val(values.phonenumber);
-                    $editor.find('#email').val(values.email);
+                    $editor.find('#contract').val(values.contract);
+                    $editor.find('#rent').val(values.rent);
+                    $editor.find('#utilities').val(values.utilities);
+                    $editor.find('#salestax').val(values.salestax);
+                    $editor.find('#paymentdate').val(values.paymentdate);
                     $modal.data('row', row);
                     $editorTitle.text('Edit row #' + values.id);
                     $modal.modal('show');
@@ -30,7 +31,7 @@ jQuery(function($) {
                 deleteRow: function(row){
                     if (confirm('Are you sure you want to delete the row?')){
                         $.ajax({
-                            url: baseurl + "/owners/"+row.val().id + '/',
+                            url: baseurl + "/payments/"+row.val().id + '/',
                             type: 'DELETE',
                             success: function(result) {
                                 console.log("success");
@@ -42,8 +43,6 @@ jQuery(function($) {
             }
         }),
         uid = 10;
-        
-        
   
     $editor.on('submit', function(e){
         if (this.checkValidity && !this.checkValidity()) return;
@@ -51,24 +50,26 @@ jQuery(function($) {
         var row = $modal.data('row'),
             values = {
                 id: $editor.find('#id').val(),
-                name: $editor.find('#name').val(),
-                address: $editor.find('#address').val(),
-                phonenumber: $editor.find('#phonenumber').val(),
-                email: $editor.find('#email').val()
+                contract: $editor.find('#contract').val(),
+                rent: $editor.find('#rent').val(),
+                utilities: $editor.find('#utilities').val(),
+                salestax: $editor.find('#salestax').val(),
+                paymentdate: $editor.find('#paymentdate').val()
             };
 
         if (row instanceof FooTable.Row){
             
             var myData = {
                 "id": values.id,
-                "name": values.name,
-                "address": values.address,
-                "phonenumber": values.phonenumber,
-                "email": values.email
+                "contract": values.contract,
+                "rent": values.rent,
+                "utilities": values.utilities,
+                "salestax": values.salestax,
+                "paymentdate": values.paymentdate
             };
             
             $.ajax({
-                url: baseurl + "/owners/"+ values.id + '/',
+                url: baseurl + "/payments/"+ values.id + '/',
                 type: 'PATCH',
                 contentType: "application/json",
                 dataType: "json",
@@ -81,12 +82,13 @@ jQuery(function($) {
             row.val(values);
             
         } else {
-            $.post(baseurl + "/owners/",{
+            $.post(baseurl + "/payments/",{
 				"id": values.id,
-                "name": values.name,
-                "address": values.address,
-                "phonenumber": values.phonenumber,
-                "email": values.email
+                "contract": values.contract,
+                "rent": values.rent,
+                "utilities": values.utilities,
+                "salestax": values.salestax,
+                "paymentdate": values.paymentdate
             });
             values.id = uid++;
             ft.rows.add(values);

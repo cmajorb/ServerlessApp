@@ -1,12 +1,12 @@
 # serializers.py
 from rest_framework import serializers
-from .models import Contract, Tenant, Owner, Property
+from .models import Contract, Tenant, Owner, Property, Payment
 
 
 class OwnerSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Owner
-        fields = ('id','name','address','phonenumber','modified','added')
+        fields = ('id','name','address','phonenumber','email','modified','added')
 
 class PropertySerializer(serializers.ModelSerializer):
     class Meta:
@@ -28,4 +28,10 @@ class TenantSerializer(serializers.ModelSerializer):
     contracts = serializers.StringRelatedField(many=True)
     class Meta:
         model = Tenant
-        fields = ('id','name','contracts','modified','added')
+        fields = ('id','name','email','contracts','modified','added')
+
+class PaymentSerializer(serializers.ModelSerializer):
+    contract = serializers.CharField(read_only=True,source='contractid.contractid')
+    class Meta:
+        model = Payment
+        fields = ('id','contractid','contract','salestax','rent','utilities','paymentdate','modified','added')

@@ -2,5 +2,6 @@
   {"name":"id","title":"ID","class":"footable-sortable"},
   {"name":"name","title":"Name","class":"footable-sortable"},
   {"name":"address","title":"Address","class":"footable-sortable"},
-  {"name":"phonenumber","title":"Phone Number","class":"footable-sortable"}
+  {"name":"phonenumber","title":"Phone Number","class":"footable-sortable"},
+  {"name":"email","title":"Email","class":"footable-sortable"}
 ]

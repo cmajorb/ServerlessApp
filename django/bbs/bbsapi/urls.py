@@ -8,6 +8,7 @@ router.register(r'contracts', views.ContractViewSet)
 router.register(r'owners', views.OwnerViewSet)
 router.register(r'tenants', views.TenantViewSet)
 router.register(r'properties', views.PropertyViewSet)
+router.register(r'payments', views.PaymentViewSet)
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.

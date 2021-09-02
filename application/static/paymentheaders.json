@@ -1,0 +1,9 @@
+[
+  {"name":"id","title":"ID","class":"footable-sortable"},
+  {"name":"contract","title":"Contract","class":"footable-sortable"},
+  {"name":"rent","title":"Rent","class":"footable-sortable"},
+  {"name":"utilities","title":"Utilities","class":"footable-sortable"},
+  {"name":"salestax","title":"Sales Tax","class":"footable-sortable"},
+  {"name":"paymentdate","title":"Payment Date","class":"footable-sortable"}
+  
+]

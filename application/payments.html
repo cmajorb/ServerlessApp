@@ -46,7 +46,66 @@
 
     <div class="starter-template">
       <h1>Payments</h1>
-      
+      <div class="modal fade" id="editor-modal" tabindex="-1" role="dialog" aria-labelledby="editor-title">
+        <style scoped>
+          /* provides a red astrix to denote required fields - this should be included in common stylesheet */
+          .form-group.required .control-label:after {
+            content: "*";
+            color: red;
+            margin-left: 4px;
+          }
+        </style>
+        <div class="modal-dialog" role="document">
+          <form class="modal-content form-horizontal" id="editor">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                  aria-hidden="true">×</span></button>
+              <h4 class="modal-title" id="editor-title">Add Row</h4>
+            </div>
+            <div class="modal-body">
+              <input type="text" id="id" name="id" class="hidden" />
+              <div class="form-group">
+                <label for="contract" class="col-sm-3 control-label">Contract</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="contract" name="contract" placeholder="Contract">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="rent" class="col-sm-3 control-label">Rent</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="rent" name="rent" placeholder="Rent">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="utilities" class="col-sm-3 control-label">Utilities</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="utilities" name="utilities" placeholder="Utilities">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="salestax" class="col-sm-3 control-label">Sales Tax</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="salestax" name="salestax" placeholder="Sales Tax">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="paymentdate" class="col-sm-3 control-label">Payment Date</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="paymentdate" name="paymentdate" placeholder="Payment Date">
+                </div>
+              </div>
+
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">Save changes</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <table id="editing-example" class="table footable footable-1 footable-editing footable-editing-right footable-editing-no-view footable-filtering footable-filtering-right footable-paging footable-paging-center breakpoint-lg" data-paging="false" data-filtering="true" data-sorting="true">
+      </table>
     </div>
 
   </div>
@@ -55,7 +114,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
   <script src="/js/footable.js"></script>
   <script src="js/main.js"></script>
-
+  <script src="js/payments.js"></script>
 
 </body>
 

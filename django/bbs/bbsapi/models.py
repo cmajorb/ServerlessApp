@@ -6,6 +6,7 @@ class Owner(models.Model):
     name = models.CharField(max_length=60)
     address = models.CharField(max_length=60,blank=True)
     phonenumber = models.CharField(max_length=60,blank=True)
+    email = models.CharField(max_length=60,blank=True)
     modified = models.DateTimeField(auto_now=True)
     added = models.DateTimeField(auto_now_add=True)
     def __str__(self):
@@ -14,6 +15,7 @@ class Owner(models.Model):
 class Tenant(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=60)
+    email = models.CharField(max_length=60,blank=True)
     modified = models.DateTimeField(auto_now=True)
     added = models.DateTimeField(auto_now_add=True)
     def __str__(self):
@@ -45,3 +47,15 @@ class Contract(models.Model):
     added = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return self.contractid
+
+class Payment(models.Model):
+    id = models.AutoField(primary_key=True)
+    contractid = models.ForeignKey(Contract,on_delete=models.CASCADE)
+    salestax = models.DecimalField(max_digits=10,decimal_places=2)
+    rent = models.DecimalField(max_digits=10,decimal_places=2)
+    utilities = models.DecimalField(max_digits=10,decimal_places=2)
+    paymentdate= models.DateField(null=True)
+    modified = models.DateTimeField(auto_now=True)
+    added = models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return str(self.contractid) + '(' + str(self.id) + ')'

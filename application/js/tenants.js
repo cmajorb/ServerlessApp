@@ -20,6 +20,7 @@ jQuery(function($) {
                     console.log(values);
                     $editor.find('#id').val(values.id);
                     $editor.find('#name').val(values.name);
+                    $editor.find('#email').val(values.email);
                     $modal.data('row', row);
                     $editorTitle.text('Edit row #' + values.id);
                     $modal.modal('show');
@@ -48,14 +49,16 @@ jQuery(function($) {
         var row = $modal.data('row'),
             values = {
                 id: $editor.find('#id').val(),
-                name: $editor.find('#name').val()
+                name: $editor.find('#name').val(),
+                email: $editor.find('#email').val()
             };
 
         if (row instanceof FooTable.Row){
             
             var myData = {
                 "id": values.id,
-                "name": values.name
+                "name": values.name,
+                "email": values.email
             };
             
             $.ajax({
@@ -74,7 +77,8 @@ jQuery(function($) {
         } else {
             $.post(baseurl + "/tenants/",{
 				"id": values.id,
-                "name": values.name
+                "name": values.name,
+                "email": values.email
             });
             values.id = uid++;
             ft.rows.add(values);
