@@ -119,10 +119,16 @@ class GenerateInvoices(views.APIView):
     def get(self, request):
         queryset = Contract.objects.all().order_by('id')
         date = self.request.query_params.get('date')
-        #need to calculate the rent using increase percentage
         if date is not None:
             for contract in queryset:
-                invoice = Invoice(contractid=contract, rentdue=contract.baserent, utilitiesdue=contract.utilities, salestaxdue=contract.salestax,date = date)
-                invoice.save()
+                if contract.increasedate and contract.increasepercentage:
+                    currentdate = datetime.fromisoformat(date)
+                    adjusted = currentdate + relativedelta(months=+(13 - contract.increasedate.month))
+                    monthdays = calendar.monthrange(currentdate.year,currentdate.month)[1]
+                    newrent = contract.baserent * ((1 + contract.increasepercentage) ** ((adjusted.year - contract.increasedate.year)))
+                    if contract.increasedate.month == currentdate.month:
+                        newrent = ((contract.baserent * (contract.increasedate.day - 1) * (((1 + contract.increasepercentage) ** ((adjusted.year - contract.increasedate.year - 1))) - ((1 + contract.increasepercentage) ** ((adjusted.year - contract.increasedate.year)))) ) / monthdays ) + contract.baserent * ((1 + contract.increasepercentage) ** ((adjusted.year - contract.increasedate.year)))
+                    invoice = Invoice(contractid=contract, rentdue=newrent, utilitiesdue=contract.utilities, salestaxdue=contract.salestax,date = date)
+                    invoice.save()
         return HttpResponse("it works!")
 

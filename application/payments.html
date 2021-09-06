@@ -112,10 +112,10 @@
 
 <!-- Modal -->
 <div class="modal fade" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="paymentModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
+  <div class="modal-dialog modal-lg" role="document" style="width:90%">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="paymentModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="paymentModalLabel">New Payment</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -123,7 +123,7 @@
       <form id="payForm">
       <div class="modal-body">
         <table class="table">
-          <thead  class="table-dark">
+          <thead>
             <tr>
               <th scope="col">Received</th>
               <th scope="col">Total</th>
@@ -132,7 +132,7 @@
           </thead>
           <tbody>
             <tr>
-              <td><input type="text" id = "received" class="changes"/></td>
+              <td><input type="text" id = "received" class="changes" value="0" /></td>
               <td id="total">0</td>
               <td id="remaining">0</td>    
             </tr>

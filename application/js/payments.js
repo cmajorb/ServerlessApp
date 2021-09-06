@@ -1,4 +1,9 @@
 var paymentdata;
+const formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 2
+  });
 
 function sumTotals() {
     var sum = 0;
@@ -11,9 +16,9 @@ function sumTotals() {
     $(".salestaxpay").each(function(){
         sum += +$(this).val();
     });
-    $("#total").html(sum);
-
-    $("#remaining").html($("#received").val() - sum);    
+    $("#total").html(formatter.format(sum));
+    var diff = $("#received").val() - sum;
+    $("#remaining").html(formatter.format(diff));    
 }
 
 $(document).on("change", ".changes", function() {
@@ -95,16 +100,16 @@ jQuery(function($) {
                         $('<td>').append($('<input>').attr('class', 'form-check-input form-control rent changes').attr('value', key).attr('type', 'checkbox')),
                         $('<td>').text(entry.date),
                         $('<td>').text(entry.contract),
-                        $('<td>').text(entry.rentdue),
-                        $('<td>').text(entry.rentdue - entry.rentpaid),
+                        $('<td>').text(formatter.format(entry.rentdue)),
+                        $('<td>').text(formatter.format(entry.rentdue - entry.rentpaid)),
                         $('<td>').append($('<input>').attr('class', 'form-control rentpay changes').attr('type', 'text').attr('value', 0)),
     
-                        $('<td>').text(entry.utilitiesdue),
-                        $('<td>').text(entry.utilitiesdue - entry.utilitiespaid),
+                        $('<td>').text(formatter.format(entry.utilitiesdue)),
+                        $('<td>').text(formatter.format(entry.utilitiesdue - entry.utilitiespaid)),
                         $('<td>').append($('<input>').attr('class', 'form-control utilitiespay changes').attr('type', 'text').attr('value', 0)),
     
-                        $('<td>').text(entry.salestaxdue),
-                        $('<td>').text(entry.salestaxdue - entry.salestaxpaid),
+                        $('<td>').text(formatter.format(entry.salestaxdue)),
+                        $('<td>').text(formatter.format(entry.salestaxdue - entry.salestaxpaid)),
                         $('<td>').append($('<input>').attr('class', 'form-control salestaxpay changes').attr('type', 'text').attr('value', 0)),
 
                         $('<td style="display:none;">').attr('class', 'invoice').text(entry.id)
