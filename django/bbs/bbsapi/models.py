@@ -32,6 +32,7 @@ class Property(models.Model):
 
 class Contract(models.Model):
     id = models.AutoField(primary_key=True)
+    active = models.BooleanField(default=True)
     contractid = models.CharField(max_length=60)
     tenantid = models.ForeignKey(Tenant,related_name='contracts',on_delete=models.CASCADE)
     propertyid = models.ForeignKey(Property,on_delete=models.CASCADE)
@@ -48,14 +49,49 @@ class Contract(models.Model):
     def __str__(self):
         return self.contractid
 
-class Payment(models.Model):
+class Invoice(models.Model):
     id = models.AutoField(primary_key=True)
     contractid = models.ForeignKey(Contract,on_delete=models.CASCADE)
-    salestax = models.DecimalField(max_digits=10,decimal_places=2)
-    rent = models.DecimalField(max_digits=10,decimal_places=2)
-    utilities = models.DecimalField(max_digits=10,decimal_places=2)
-    paymentdate= models.DateField(null=True)
+    rentdue = models.DecimalField(max_digits=10,decimal_places=2)
+    utilitiesdue = models.DecimalField(max_digits=10,decimal_places=2)
+    salestaxdue = models.DecimalField(max_digits=10,decimal_places=2)   
+    date = models.DateField(null=True)
     modified = models.DateTimeField(auto_now=True)
     added = models.DateTimeField(auto_now_add=True)
     def __str__(self):
-        return str(self.contractid) + '(' + str(self.id) + ')'
+        return str(self.contractid) + '(' + str(self.date) + ')'
+
+class Payment(models.Model):
+    id = models.AutoField(primary_key=True)
+    invoice = models.ForeignKey(Invoice,related_name='payments',on_delete=models.CASCADE)
+    salestax = models.DecimalField(max_digits=10,decimal_places=2)
+    rent = models.DecimalField(max_digits=10,decimal_places=2)
+    utilities = models.DecimalField(max_digits=10,decimal_places=2)
+    modified = models.DateTimeField(auto_now=True)
+    added = models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return str(self.invoice) + '(' + str(self.id) + ')'
+
+
+class Deposit(models.Model):
+    id = models.AutoField(primary_key=True)
+    tenant = models.ForeignKey(Tenant,on_delete=models.CASCADE)
+    rent = models.DecimalField(max_digits=10,decimal_places=2)
+    utilities = models.DecimalField(max_digits=10,decimal_places=2)
+    salestax = models.DecimalField(max_digits=10,decimal_places=2)   
+    date = models.DateField(null=True)
+    modified = models.DateTimeField(auto_now=True)
+    added = models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return str(self.tenant) + '(' + str(self.id) + ')'
+
+class Amendment(models.Model):
+    id = models.AutoField(primary_key=True)
+    contractid = models.ForeignKey(Contract,on_delete=models.CASCADE)
+    rent = models.DecimalField(max_digits=10,decimal_places=2)
+    startdate = models.DateField(null=True)
+    active = models.BooleanField(default=True)
+    modified = models.DateTimeField(auto_now=True)
+    added = models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return str(self.tenant) + '(' + str(self.id) + ')'

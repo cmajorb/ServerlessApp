@@ -6,8 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,600&display=swap" rel="stylesheet">
   <link href="css/main.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
   <link href="css/footable.bootstrap.css" rel="stylesheet" />
   <title>Bright Business Solutions</title>
@@ -103,6 +102,74 @@
           </form>
         </div>
       </div>
+
+      <form class="form-inline">
+        <label for="tenantSelect">Tenant</label>
+        <select class="form-control mb-2 mr-sm-2" id="tenantSelect">
+        </select>
+        <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#paymentModal">Make Payment</button>
+      </form>
+
+<!-- Modal -->
+<div class="modal fade" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="paymentModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="paymentModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form id="payForm">
+      <div class="modal-body">
+        <table class="table">
+          <thead  class="table-dark">
+            <tr>
+              <th scope="col">Received</th>
+              <th scope="col">Total</th>
+              <th scope="col">Remaining</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="text" id = "received" class="changes"/></td>
+              <td id="total">0</td>
+              <td id="remaining">0</td>    
+            </tr>
+          </tbody>
+          
+        </table>
+
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Date</th>
+                <th scope="col">Contract</th>
+                <th scope="col">Rent Due</th>
+                <th scope="col">Rent Open Balance</th>
+                <th scope="col">Rent Payment</th>
+                <th scope="col">Utilities Due</th>
+                <th scope="col">Utilities Open Balance</th>
+                <th scope="col">Utilities Payment</th>
+                <th scope="col">Sales Tax Due</th>
+                <th scope="col">Sales Tax Open Balance</th>
+                <th scope="col">Sales Tax Payment</th>
+              </tr>
+            </thead>
+            <tbody id="paymentBody">
+            </tbody>
+          </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="save">Save changes</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+
 
       <table id="editing-example" class="table footable footable-1 footable-editing footable-editing-right footable-editing-no-view footable-filtering footable-filtering-right footable-paging footable-paging-center breakpoint-lg" data-paging="false" data-filtering="true" data-sorting="true">
       </table>

@@ -50,13 +50,13 @@ jQuery(function($) {
             }
         }),
         uid = 10;
-        
+     
+    
         
   
     $editor.on('submit', function(e){
         if (this.checkValidity && !this.checkValidity()) return;
         e.preventDefault();
-        console.log($editor.find('#tenant').val());
         var row = $modal.data('row'),
             values = {
                 id: $editor.find('#id').val(),
